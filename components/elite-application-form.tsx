@@ -43,62 +43,60 @@ export default function EliteApplicationForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    try {
-      // Prepare the data for submission
-      const submissionData = {
-        brandName: formData.brandName,
-        email: formData.email,
-        phone: formData.phone || "Not provided",
-        currentRevenue: formData.currentRevenue,
-        manufacturingExperience: formData.manufacturingExperience,
-        whyUs: formData.whyUs,
-        submissionType: "Elite Application",
-      }
+   try {
+  const submissionData = {
+    brandName: formData.brandName,
+    email: formData.email,
+    phone: formData.phone || "Not provided",
+    currentRevenue: formData.currentRevenue,
+    manufacturingExperience: formData.manufacturingExperience,
+    whyUs: formData.whyUs,
+    submissionType: "Elite Application",
+  }
 
-      console.log("Elite application submitted:", submissionData)
+  console.log("Elite application submitted:", submissionData)
 
-      // Your Google Apps Script URL
-      const scriptUrl =
-        "https://script.google.com/macros/s/AKfycbw-jC18X8_p7kb0TmUE-TKjxUrckHAqu3DbH1QVtFMyW32P8jMJEIFk2FYll9tChFxZ/exec"
+  const scriptUrl =
+    "https://script.google.com/macros/s/AKfycbw-jC18X8_p7kb0TmUE-TKjxUrckHAqu3DbH1QVtFMyW32P8jMJEIFk2FYll9tChFxZ/exec"
 
-      // Create URL-encoded form data
-      const formDataUrlEncoded = new URLSearchParams()
-      Object.entries(submissionData).forEach(([key, value]) => {
-        formDataUrlEncoded.append(key, value as string)
-      })
+  const formDataUrlEncoded = new URLSearchParams()
+  Object.entries(submissionData).forEach(([key, value]) => {
+    formDataUrlEncoded.append(key, value as string)
+  })
 
-      // Submit to Google Apps Script
-      await fetch(scriptUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formDataUrlEncoded.toString(),
-      })
+  await fetch(scriptUrl, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: formDataUrlEncoded.toString(),
+  })
 
-      // Save to localStorage
-      if (formData.brandName) localStorage.setItem("userName", formData.brandName)
-      if (formData.email) localStorage.setItem("userEmail", formData.email)
+  // ✅ Fire Facebook Pixel "Lead" event here
+  if (typeof window !== "undefined" && (window as any).fbq) {
+    (window as any).fbq("track", "Lead")
+  }
 
-      // Show success message
-      alert("Application received. We'll be in touch within 48 hours if you qualify.")
+  if (formData.brandName) localStorage.setItem("userName", formData.brandName)
+  if (formData.email) localStorage.setItem("userEmail", formData.email)
 
-      // Reset form
-      setFormData({
-        brandName: "",
-        email: "",
-        phone: "",
-        currentRevenue: "",
-        manufacturingExperience: "",
-        whyUs: "",
-      })
-    } catch (error) {
-      console.error("Application submission error:", error)
-      alert("Application received. We'll review and respond accordingly.")
-    } finally {
-      setIsSubmitting(false)
-    }
+  alert("Application received. We'll be in touch within 48 hours if you qualify.")
+
+  setFormData({
+    brandName: "",
+    email: "",
+    phone: "",
+    currentRevenue: "",
+    manufacturingExperience: "",
+    whyUs: "",
+  })
+} catch (error) {
+  console.error("Application submission error:", error)
+  alert("Application received. We'll review and respond accordingly.")
+} finally {
+  setIsSubmitting(false)
+}
   }
 
   return (
