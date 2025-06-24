@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Navbar from "@/components/navbar"
-import BlueprintCodePage from "@/components/blueprint-code-page"
+import BlueprintCodePage from "@/components/blueprint-hero-section"
 import WhatsAppButton from "@/components/whatsapp-button"
 
 export const metadata: Metadata = {
