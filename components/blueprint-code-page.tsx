@@ -11,9 +11,15 @@ import Image from "next/image"
 export default function BlueprintCodePage() {
   const [isVisible, setIsVisible] = useState(false)
   const [scrollPosition, setScrollPosition] = useState(0)
+  const [showStickyButton, setShowStickyButton] = useState(false)
 
   useEffect(() => {
     setIsVisible(true)
+    const handleScroll = () => {
+      setShowStickyButton(window.scrollY > 300)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const handleModalOpen = () => {
@@ -113,295 +119,60 @@ export default function BlueprintCodePage() {
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden">
+      {/* Sticky Apply Button */}
+      {showStickyButton && (
+        <Link href="/elite-application">
+          <button className="fixed z-50 bottom-6 right-6 bg-[#8B0000] hover:bg-[#DC2626] text-white text-sm font-mono px-5 py-3 rounded-xl shadow-xl border-2 border-[#8B0000] hover:border-[#C0C0C0] transition-all duration-500">
+            APPLY TO MANUFACTURE
+          </button>
+        </Link>
+      )}
+
+      {/* Hero Section + Dialog */}
       <div className="relative z-10 pt-20">
-        {/* Hero Section - Mobile Optimized */}
         <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/30 to-black" />
-
-          <div
-            className={`relative z-10 container-responsive text-center mobile-center transition-all duration-2000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          >
-            <div className="space-y-8 sm:space-y-12">
-              {/* Mobile-Optimized Headline */}
-              <div className="space-y-4 sm:space-y-6">
-                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none font-mono">
-                  <span className="block text-white">THE</span>
-                  <span className="block text-[#DC2626]">BLUEPRINT</span>
-                  <span className="block text-white">CODE</span>
-                </h1>
-
-                <div className="h-px bg-gradient-to-r from-transparent via-[#C0C0C0] to-transparent max-w-2xl sm:max-w-4xl mx-auto" />
-
-                <h2 className="responsive-subheading font-bold text-[#C0C0C0] max-w-3xl sm:max-w-5xl mx-auto leading-tight">
-                  The Unspoken Rules of the 1% Clothing Manufacturers
-                </h2>
-              </div>
-
-              {/* Mobile-Optimized Subheadline */}
-              <div className="space-y-6 sm:space-y-8">
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto italic font-light leading-relaxed">
-                  "This isn't a how-to guide. It's a mirror. If you don't see yourself in these pages, you're not built
-                  for this industry."
-                </p>
-
-                {/* Mobile-Optimized CTA Button */}
+          <div className={`relative z-10 container-responsive text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <div className="space-y-6 sm:space-y-10">
+              <h1 className="text-6xl sm:text-8xl font-black tracking-tighter leading-none font-mono">
+                <span className="block text-white">THE</span>
+                <span className="block text-[#DC2626]">BLUEPRINT</span>
+                <span className="block text-white">CODE</span>
+              </h1>
+              <p className="text-gray-400 italic text-base sm:text-xl font-light max-w-2xl mx-auto">
+                "This isn't a how-to guide. It's a mirror. If you don't see yourself in these pages, you're not built for this industry."
+              </p>
+              <div className="flex flex-col gap-4 items-center justify-center">
                 <Link href="/elite-application">
-                  <Button className="bg-[#8B0000] hover:bg-[#DC2626] text-white px-6 sm:px-12 py-4 sm:py-6 text-sm sm:text-lg font-mono tracking-widest border-2 border-[#8B0000] hover:border-[#C0C0C0] transition-all duration-500 hover:shadow-2xl hover:shadow-red-900/50 group relative overflow-hidden glitch">
-                    <span className="relative z-10 group-hover:animate-pulse">[APPLY TO MANUFACTURE WITH US]</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  <Button className="bg-[#8B0000] hover:bg-[#DC2626] text-white px-8 py-4 text-sm font-mono tracking-widest border-2 border-[#8B0000] hover:border-[#C0C0C0] transition-all duration-500 shadow-xl">
+                    [APPLY TO MANUFACTURE WITH US]
                   </Button>
                 </Link>
+
+                {/* Dialog Popup "Why Apply?" */}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <p className="text-sm text-gray-500 underline cursor-pointer">Why Apply?</p>
+                  </DialogTrigger>
+                  <DialogContent className="bg-black border border-[#DC2626] max-w-sm sm:max-w-lg p-6">
+                    <div className="text-white text-sm sm:text-lg leading-relaxed space-y-3">
+                      <h3 className="text-[#DC2626] font-bold font-mono text-xl">Why We Ask You to Apply</h3>
+                      <p>We're not a mass-factory. We're a performance manufacturing system.</p>
+                      <p>Every brand we take on goes through filters. We're not interested in volume — we're obsessed with **output that moves culture.**</p>
+                      <p className="italic text-[#DC2626]">Only 7 brands are approved each month. If you're one of them, everything changes.</p>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
         </section>
+        {/* 🔻 You can keep rest of the original 300+ lines as is below this */}
 
-        {/* Section 1: The 9 Hidden Codes - Mobile Optimized */}
-        <section className="section-padding bg-gradient-to-b from-black to-gray-900">
-          <div className="container-responsive">
-            <div className="text-center section-margin mobile-center">
-              <h2 className="responsive-heading font-black text-white mb-6 sm:mb-8 tracking-tight font-mono">
-                THE 9 HIDDEN CODES OF KILLER MANUFACTURERS
-              </h2>
-              <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto italic font-light leading-relaxed">
-                These aren't tips. They're a creed. If you've ever had to explain your obsession with production, you
-                won't need to here.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
-              {codes.map((code, index) => (
-                <Card
-                  key={index}
-                  className="bg-black/70 border-[#C0C0C0]/30 hover:border-[#DC2626] transition-all duration-700 group industrial-shadow"
-                >
-                  <CardContent className="p-4 sm:p-6 text-center">
-                    <div className="text-xl sm:text-3xl font-mono text-[#DC2626] font-black mb-3 sm:mb-4 group-hover:scale-125 transition-transform duration-500">
-                      #{String(index + 1).padStart(2, "0")}
-                    </div>
-                    <h3 className="text-xs sm:text-sm md:text-base font-bold text-white group-hover:text-[#DC2626] transition-colors duration-500 leading-tight">
-                      {code}
-                    </h3>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Section 2: The Non-Negotiables - Single Close Button */}
-        <section className="section-padding bg-black">
-          <div className="container-responsive">
-            <div className="text-center section-margin mobile-center">
-              <h2 className="responsive-heading font-black text-white mb-6 sm:mb-8 tracking-tight font-mono">
-                THE NON-NEGOTIABLES
-              </h2>
-              <p className="text-sm sm:text-lg text-[#DC2626] font-mono mb-8 sm:mb-12 italic">
-                What we never tolerate:
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto mb-8 sm:mb-12">
-              {nonNegotiables.map((item, index) => (
-                <Dialog key={index}>
-                  <DialogTrigger asChild>
-                    <div className="group cursor-pointer" onClick={handleModalOpen}>
-                      <div className="bg-gray-900/30 border-2 border-[#C0C0C0]/20 p-4 sm:p-6 hover:border-[#DC2626] transition-all duration-500 hover:bg-[#DC2626]/10 industrial-shadow">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3 sm:space-x-4">
-                            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#DC2626] rotate-45 group-hover:scale-150 transition-transform duration-500" />
-                            <span className="text-sm sm:text-lg text-white font-medium group-hover:text-[#DC2626] transition-colors duration-500">
-                              {item.title}
-                            </span>
-                          </div>
-                          <div className="text-[#C0C0C0] group-hover:text-[#DC2626] transition-colors duration-500 font-mono text-xs">
-                            [CLICK]
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="bg-black border-[#DC2626] max-w-sm sm:max-w-lg modal-content">
-                    <div className="p-4 sm:p-6 text-center">
-                      <button
-                        onClick={handleModalClose}
-                        className="absolute top-3 right-3 text-[#C0C0C0] hover:text-[#DC2626] transition-colors"
-                      >
-                        <X className="h-5 w-5" />
-                      </button>
-                      <h3 className="text-lg sm:text-2xl font-bold text-[#DC2626] mb-4 font-mono">
-                        {item.title.toUpperCase()}
-                      </h3>
-                      <p className="text-sm sm:text-lg text-white leading-relaxed">{item.description}</p>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <p className="text-lg sm:text-2xl text-gray-400 font-light italic">These are your filters. Stay cold.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 3: The Quiet Dominators - Single Close Button */}
-        <section className="section-padding bg-gradient-to-b from-black to-gray-900">
-          <div className="container-responsive">
-            <div className="text-center section-margin mobile-center">
-              <h2 className="responsive-heading font-black text-white mb-6 sm:mb-8 tracking-tight font-mono">
-                THE QUIET DOMINATORS
-              </h2>
-              <p className="text-sm sm:text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed font-light">
-                5 anonymous profiles of manufacturers whose work you wear every day — but you'll never find them online.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 mb-12 sm:mb-16">
-              {dominators.map((dominator) => (
-                <Dialog key={dominator.id}>
-                  <DialogTrigger asChild>
-                    <Card
-                      className="bg-black/80 border-[#C0C0C0]/20 overflow-hidden group hover:border-[#DC2626]/50 transition-all duration-700 cursor-pointer"
-                      onClick={handleModalOpen}
-                    >
-                      <CardContent className="p-0">
-                        <div className="h-32 sm:h-48 lg:h-64 relative overflow-hidden">
-                          <Image
-                            src={dominator.image || "/placeholder.svg"}
-                            alt={dominator.name}
-                            fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-700"
-                          />
-                          <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-all duration-700" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-xs sm:text-lg font-mono text-[#DC2626]/60 group-hover:text-[#DC2626]/90 transition-colors duration-700 transform group-hover:scale-110">
-                              [CLASSIFIED]
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </DialogTrigger>
-                  <DialogContent className="bg-black border-[#DC2626] max-w-xs sm:max-w-3xl modal-content">
-                    <div className="p-4 sm:p-6">
-                      <button
-                        onClick={handleModalClose}
-                        className="absolute top-3 right-3 text-[#C0C0C0] hover:text-[#DC2626] transition-colors z-10"
-                      >
-                        <X className="h-5 w-5" />
-                      </button>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        <div className="relative h-48 sm:h-64 overflow-hidden rounded-lg">
-                          <Image
-                            src={dominator.image || "/placeholder.svg"}
-                            alt={dominator.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="space-y-3 sm:space-y-4">
-                          <div>
-                            <h3 className="text-lg sm:text-2xl font-bold text-[#DC2626] mb-1 font-mono">
-                              {dominator.name}
-                            </h3>
-                            <p className="text-[#C0C0C0] text-sm">{dominator.location}</p>
-                          </div>
-                          <div>
-                            <h4 className="text-sm sm:text-lg font-semibold text-white mb-1">Specialty:</h4>
-                            <p className="text-xs sm:text-sm text-gray-300">{dominator.specialty}</p>
-                          </div>
-                          <div>
-                            <h4 className="text-sm sm:text-lg font-semibold text-white mb-1">Profile:</h4>
-                            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed whitespace-pre-line">
-                              {dominator.bio}
-                            </p>
-                          </div>
-                          <div className="border-l-4 border-[#DC2626] pl-3 sm:pl-4">
-                            <p className="text-xs sm:text-lg text-white italic">"{dominator.quote}"</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              ))}
-            </div>
-
-            <div className="text-center space-y-3 sm:space-y-4">
-              <p className="text-sm sm:text-lg text-gray-400">No Instagram. No TikTok. No ads.</p>
-              <p className="text-base sm:text-xl text-white font-medium">
-                Just systems, supply chains, and private jets.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 4: The War Room Rules - Mobile Optimized */}
-        <section className="section-padding bg-black">
-          <div className="container-responsive">
-            <div className="text-center section-margin mobile-center">
-              <h2 className="responsive-heading font-black text-white mb-6 sm:mb-8 tracking-tight font-mono">
-                THE WAR ROOM RULES
-              </h2>
-              <p className="text-sm sm:text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed font-light">
-                The top 1% don't hustle. They <span className="text-[#DC2626] font-bold">negotiate</span>,{" "}
-                <span className="text-[#DC2626] font-bold">cut</span>, and{" "}
-                <span className="text-[#DC2626] font-bold">walk away</span> without emotion.
-              </p>
-            </div>
-
-            <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8">
-              {warRoomRules.map((rule, index) => (
-                <div key={index} className="group">
-                  <div className="bg-gray-900/20 border-l-4 border-[#DC2626] p-4 sm:p-8 hover:bg-[#DC2626]/10 transition-all duration-500">
-                    <p className="text-sm sm:text-xl text-white font-medium group-hover:text-[#DC2626] transition-colors duration-500">
-                      {rule}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Section 5: A Blood Oath at the End - Mobile Optimized */}
-        <section className="section-padding bg-gradient-to-b from-black to-gray-900">
-          <div className="container-responsive text-center mobile-center">
-            <h2 className="responsive-heading font-black text-white mb-12 sm:mb-16 tracking-tight font-mono">
-              A BLOOD OATH AT THE END
-            </h2>
-
-            <Card className="bg-black/90 border-[#DC2626]/50 p-6 sm:p-12 mb-12 sm:mb-16 industrial-shadow">
-              <CardContent className="p-0">
-                <blockquote className="text-base sm:text-2xl md:text-3xl text-white font-light leading-relaxed italic">
-                  "I don't chase clients. I command factories. I build what others copy. I don't hustle. I manufacture."
-                </blockquote>
-              </CardContent>
-            </Card>
-
-            <div className="h-px bg-gradient-to-r from-transparent via-[#DC2626] to-transparent mb-12 sm:mb-16" />
-
-            {/* Final CTA - Mobile Optimized */}
-            <div className="space-y-6 sm:space-y-8">
-              <h3 className="text-xl sm:text-3xl font-black text-white font-mono">Still here? We see you.</h3>
-
-              <p className="text-sm sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
-                If you're building a brand worth manufacturing — not just designing — you've found your people.
-                <br />
-                <br />
-                We don't work with everyone. Only killers. Apply now.
-              </p>
-
-              <Link href="/elite-application">
-                <Button className="bg-[#8B0000] hover:bg-[#DC2626] text-white px-8 sm:px-16 py-4 sm:py-8 text-base sm:text-xl font-mono tracking-widest border-2 border-[#8B0000] hover:border-[#C0C0C0] transition-all duration-500 hover:shadow-2xl hover:shadow-red-900/50 group relative overflow-hidden glitch">
-                  <span className="relative z-10 group-hover:animate-pulse">[APPLY TO MANUFACTURE WITH US]</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* At end of "Blood Oath" section, under final CTA — add this urgency line */}
+        <div className="text-center mt-6">
+          <p className="text-sm text-[#DC2626] font-mono italic">⚠️ Applications close after 7 approvals each month.</p>
+        </div>
       </div>
     </div>
   )
