@@ -283,10 +283,11 @@ export default function BlueprintHeroSection() {
               We don't work with everyone. Only killers. Apply now.
             </p>
             <Link href="/elite-application">
-              <Button className="bg-[#8B0000] hover:bg-[#DC2626] text-white px-20 py-10 text-2xl font-mono tracking-widest border-2 border-[#8B0000] hover:border-[#C0C0C0] transition-all duration-500 hover:shadow-2xl hover:shadow-red-900/50 group relative overflow-hidden glitch">
-                <span className="relative z-10">[APPLY TO MANUFACTURE WITH US]</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              </Button>
+              <Button className="bg-[#8B0000] hover:bg-[#DC2626] text-white px-6 sm:px-12 lg:px-20 py-4 sm:py-6 lg:py-10 text-base sm:text-lg lg:text-2xl font-mono tracking-widest border-2 border-[#8B0000] hover:border-[#C0C0C0] transition-all duration-500 hover:shadow-2xl hover:shadow-red-900/50 group relative overflow-hidden glitch mx-auto block text-center">
+  <span className="relative z-10">[APPLY TO MANUFACTURE WITH US]</span>
+  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+</Button>
+
             </Link>
           </div>
         </div>
