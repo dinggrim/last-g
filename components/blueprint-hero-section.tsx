@@ -121,7 +121,7 @@ export default function BlueprintHeroSection() {
         >
           <div className="space-y-16">
             <div className="space-y-8">
-              <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter leading-none font-mono">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[10rem] font-black tracking-tighter leading-none font-mono text-center">
                 <span className="block text-white">THE</span>
                 <span className="block text-[#DC2626]">BLUEPRINT</span>
                 <span className="block text-white">CODE</span>
