@@ -201,6 +201,16 @@ export default function BlueprintHeroSection() {
                   </div>
                 </DialogTrigger>
                 <DialogContent onCloseAutoFocus={handleModalClose} className="bg-black border-[#DC2626] max-w-2xl">
+                  <div className="absolute top-4 right-4 z-50">
+  <button
+    className="text-white hover:text-[#DC2626] text-2xl font-bold transition duration-300"
+    onClick={() => document.activeElement?.blur()}
+    aria-label="Close"
+  >
+    ✕
+  </button>
+</div>
+
                   <div className="p-8 text-center">
                     <h3 className="text-3xl font-bold text-[#DC2626] mb-6 font-mono">{item.title.toUpperCase()}</h3>
                     <p className="text-xl text-white leading-relaxed">{item.description}</p>
