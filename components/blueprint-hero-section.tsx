@@ -200,22 +200,13 @@ export default function BlueprintHeroSection() {
                     </div>
                   </div>
                 </DialogTrigger>
-                <DialogContent onCloseAutoFocus={handleModalClose} className="bg-black border-[#DC2626] max-w-2xl">
-                  <div className="absolute top-4 right-4 z-50">
-  <button
-    className="text-white hover:text-[#DC2626] text-2xl font-bold transition duration-300"
-    onClick={() => document.activeElement?.blur()}
-    aria-label="Close"
-  >
-    ✕
-  </button>
-</div>
+                <DialogContent className="bg-black border-[#DC2626] max-w-2xl">
+  <div className="p-8 text-center">
+    <h3 className="text-3xl font-bold text-[#DC2626] mb-6 font-mono">{item.title.toUpperCase()}</h3>
+    <p className="text-xl text-white leading-relaxed">{item.description}</p>
+  </div>
+</DialogContent>
 
-                  <div className="p-8 text-center">
-                    <h3 className="text-3xl font-bold text-[#DC2626] mb-6 font-mono">{item.title.toUpperCase()}</h3>
-                    <p className="text-xl text-white leading-relaxed">{item.description}</p>
-                  </div>
-                </DialogContent>
               </Dialog>
             ))}
           </div>
@@ -254,7 +245,21 @@ export default function BlueprintHeroSection() {
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <DialogContent onCloseAutoFocus={handleModalClose} className="bg-black border-[#DC2626] max-w-4xl">
+<DialogContent
+  className="bg-black border-[#DC2626] max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg relative"
+  style={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
+>
+  <button
+    className="absolute top-4 right-4 text-white hover:text-[#DC2626] text-3xl z-50"
+    aria-label="Close"
+    onClick={(e) => {
+      e.preventDefault()
+      const dialog = e.currentTarget.closest("dialog")
+      if (dialog) (dialog as HTMLDialogElement).close()
+    }}
+  >
+    &times;
+  </button>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                     <div className="relative h-96 overflow-hidden rounded-lg">
                       <Image src={dominator.image} alt={dominator.name} fill className="object-cover" />
