@@ -1,5 +1,5 @@
 "use client"
-
+console.log("BlueprintHeroSection rendered", { isVisible, showStickyButton });
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
