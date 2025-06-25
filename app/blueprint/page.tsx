@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Navbar from "@/components/navbar"
-import BlueprintCodePage from "@/components/blueprint-hero-section"
+import BlueprintHeroSection from "@/components/blueprint-hero-section";
 import WhatsAppButton from "@/components/whatsapp-button"
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function BlueprintPage() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       <Navbar />
-      <BlueprintCodePage />
+      <BlueprintHeroSection />
       <WhatsAppButton />
     </div>
   )
