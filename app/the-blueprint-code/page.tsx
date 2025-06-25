@@ -14,7 +14,7 @@ export default function TheBlueprintCode() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       <Navbar />
-      <BlueprintCodePage />
+      <BlueprintHeroSection />
       <WhatsAppButton />
     </div>
   )
