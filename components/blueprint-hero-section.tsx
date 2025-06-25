@@ -225,61 +225,76 @@ export default function BlueprintHeroSection() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-20">
             {dominators.map((dominator) => (
               <Dialog key={dominator.id}>
-                <DialogTrigger asChild>
-                  <Card className="bg-black/80 border-[#C0C0C0]/20 overflow-hidden group hover:border-[#DC2626]/50 transition-all duration-700 cursor-pointer">
-                    <CardContent className="p-0">
-                      <div className="h-80 relative overflow-hidden">
-                        <Image
-                          src={dominator.image}
-                          alt={dominator.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-all duration-700" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-2xl font-mono text-[#DC2626]/60 group-hover:text-[#DC2626]/90 transition-colors duration-700 transform group-hover:scale-110">
-                            [CLASSIFIED]
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-<DialogContent
-  className="bg-black border-[#DC2626] max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg relative"
-  style={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
->
-  <button
-    className="absolute top-4 right-4 text-white hover:text-[#DC2626] text-3xl z-50"
-    aria-label="Close"
-    onClick={(e) => {
-      e.preventDefault()
-      const dialog = e.currentTarget.closest("dialog")
-      if (dialog) (dialog as HTMLDialogElement).close()
-    }}
+  <DialogTrigger asChild>
+    <Card
+      className="bg-black/80 border-[#C0C0C0]/20 overflow-hidden group hover:border-[#DC2626]/50 transition-all duration-700 cursor-pointer"
+      onClick={handleModalOpen}
+    >
+      <CardContent className="p-0">
+        <div className="h-80 relative overflow-hidden">
+          <Image
+            src={dominator.image || "/placeholder.svg"}
+            alt={dominator.name}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-all duration-700" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-2xl font-mono text-[#DC2626]/60 group-hover:text-[#DC2626]/90 transition-colors duration-700 transform group-hover:scale-110">
+              [CLASSIFIED]
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  </DialogTrigger>
+
+  <DialogContent
+    onInteractOutside={(e) => e.preventDefault()} // prevent closing on outside click
+    onCloseAutoFocus={handleModalClose}
+    className="bg-black border-[#DC2626] max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto"
   >
-    &times;
-  </button>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-                    <div className="relative h-96 overflow-hidden rounded-lg">
-                      <Image src={dominator.image} alt={dominator.name} fill className="object-cover" />
-                    </div>
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-3xl font-bold text-[#DC2626] mb-2 font-mono">{dominator.name}</h3>
-                        <p className="text-[#C0C0C0] text-lg">{dominator.location}</p>
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-semibold text-white mb-2">Specialty:</h4>
-                        <p className="text-gray-300">{dominator.specialty}</p>
-                      </div>
-                      <div className="border-l-4 border-[#DC2626] pl-6">
-                        <p className="text-xl text-white italic">"{dominator.quote}"</p>
-                      </div>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+    <div className="relative p-4">
+      {/* Close Button */}
+      <div className="absolute top-4 right-4 z-50">
+        <button
+          className="text-white hover:text-[#DC2626] text-2xl font-bold transition duration-300"
+          onClick={() => document.activeElement?.blur()}
+          aria-label="Close"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Modal Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="relative h-96 overflow-hidden rounded-lg">
+          <Image
+            src={dominator.image || "/placeholder.svg"}
+            alt={dominator.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-3xl font-bold text-[#DC2626] mb-2 font-mono">{dominator.name}</h3>
+            <p className="text-[#C0C0C0] text-lg">{dominator.location}</p>
+          </div>
+          <div>
+            <h4 className="text-xl font-semibold text-white mb-2">Specialty:</h4>
+            <p className="text-gray-300">{dominator.specialty}</p>
+          </div>
+          <div className="border-l-4 border-[#DC2626] pl-6">
+            <p className="text-xl text-white italic">"{dominator.quote}"</p>
+          </div>
+          <div className="text-sm text-gray-400 whitespace-pre-wrap">{dominator.bio}</div>
+        </div>
+      </div>
+    </div>
+  </DialogContent>
+</Dialog>
+
             ))}
           </div>
           <div className="text-center space-y-6">
