@@ -69,7 +69,7 @@ export default function ThankYouPage() {
                 <Button className="bg-[#FF3C38] hover:bg-[#FF3C38]/90 text-white px-8 py-3">Back to Home</Button>
               </Link>
               <a
-                href="https://wa.me/923195491250?text=Hi,%20I%20just%20submitted%20a%20quote%20request.%20Can%20you%20help%20me%20with%20more%20details?"
+                href="https://wa.me/13075007462?text=Hi,%20I%20just%20submitted%20a%20quote%20request.%20Can%20you%20help%20me%20with%20more%20details?"
                 target="_blank"
                 rel="noopener noreferrer"
               >

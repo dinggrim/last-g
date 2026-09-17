@@ -4,7 +4,7 @@ import Script from 'next/script';
 
 export const metadata = {
   title: 'Custom Wear Industry',
-  description: 'Elite custom clothing manufacturing',
+  description: 'Elite custom clothing manufacturing with discreet operations and uncompromising quality.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

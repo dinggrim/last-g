@@ -131,7 +131,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 </Button>
               </Link>
               <a
-                href="https://wa.me/923195491250?text=Hi,%20I'm%20interested%20in%20custom%20clothing.%20Can%20you%20help%20me%20with%20my%20order?"
+                href="https://wa.me/13075007462?text=Hi,%20I'm%20interested%20in%20custom%20clothing.%20Can%20you%20help%20me%20with%20my%20order?"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1"
