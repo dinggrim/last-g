@@ -162,7 +162,7 @@ export default function EliteApplicationForm() {
                       value={formData.phone}
                       onChange={(e) => handleInputChange("phone", e.target.value)}
                       className="bg-black border-[#C0C0C0]/50 text-white text-base sm:text-lg p-3 sm:p-4 focus:border-[#DC2626] transition-colors duration-300"
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+1 3075007462"
                     />
                   </div>
 

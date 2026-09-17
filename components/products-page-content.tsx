@@ -49,6 +49,7 @@ const products = [
     tier: "ELITE OPS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/4.png",
+    priceRange: "$96 - $140",
     description: "Blends into civilian environments while providing tactical protection. Phase-shift lining and covert utility pockets.",
   },
   {
@@ -58,6 +59,7 @@ const products = [
     tier: "ELITE OPS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/5.png",
+    priceRange: "$78 - $112",
     description: "Multi-compartment trousers for secure carry. Reinforced seams, stealth zippers, and adaptive fit for all missions.",
   },
   {
@@ -67,6 +69,7 @@ const products = [
     tier: "ELITE OPS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/6.png",
+    priceRange: "$58 - $86",
     description: "Nullfield tech disrupts visual and digital tracking. Social camouflage patterning for blending in any crowd.",
   },
   {
@@ -76,6 +79,7 @@ const products = [
     tier: "ESSENTIAL SHADOWS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/7.png",
+    priceRange: "$24 - $38",
     description: "Ultra-soft, breathable cotton blend. Designed for all-day wear with zero profile. Invisible seams and comfort mapping.",
   },
   {
@@ -85,6 +89,7 @@ const products = [
     tier: "ESSENTIAL SHADOWS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/8.png",
+    priceRange: "$54 - $78",
     description: "Cloud-fleece insulation, anti-static lining, and deep concealment pockets. For downtime or covert movement.",
   },
   {
@@ -94,6 +99,7 @@ const products = [
     tier: "ESSENTIAL SHADOWS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/9.png",
+    priceRange: "$46 - $68",
     description: "Relaxed fit, tactical pocketing, and motion-flex zones. Engineered for recovery and readiness.",
   },
   {
@@ -103,6 +109,7 @@ const products = [
     tier: "ESSENTIAL SHADOWS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/10.png",
+    priceRange: "$38 - $56",
     description: "Polished look, covert comfort. Moisture-wicking, anti-wrinkle, and signal-dampening thread.",
   },
   {
@@ -112,6 +119,7 @@ const products = [
     tier: "ESSENTIAL SHADOWS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/11.png",
+    priceRange: "$32 - $48",
     description: "Adaptive stretch, secure fit, and quick-dry mesh. For rapid movement and low-drag performance.",
   },
   {
@@ -121,11 +129,10 @@ const products = [
     tier: "ESSENTIAL SHADOWS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/12.png",
+    priceRange: "$72 - $104",
     description: "Lightweight, wind-resistant, and ghost-light reflective. Urban-ready for all conditions.",
   },
 ]
-
-const priceRanges = ["$68 - $92", "$84 - $118", "$42 - $64", "$96 - $140", "$78 - $112", "$58 - $86", "$24 - $38", "$54 - $78", "$46 - $68", "$38 - $56", "$32 - $48", "$72 - $104"]
 
 export default function ProductsPageContent() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -164,7 +171,7 @@ export default function ProductsPageContent() {
                     </div>
                   </div>
                   <div className="p-4 flex flex-col items-start gap-3">
-                    <p className="text-lg font-bold text-white">{priceRanges[idx]}</p>
+                    <p className="text-lg font-bold text-white">{product.priceRange}</p>
                     <p className="text-xs text-gray-500">Estimated unit range</p>
                     <button className="mt-2 px-4 py-2 bg-[#DC2626] text-white rounded font-semibold text-xs tracking-wider hover:bg-[#b91c1c] transition">REQUEST ACCESS</button>
                   </div>
@@ -180,7 +187,7 @@ export default function ProductsPageContent() {
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-2">{product.codename}</h3>
                       <p className="text-lg text-gray-300 mb-2">{product.simpleName}</p>
-                      <p className="text-xl font-bold text-[#DC2626] mb-4">{priceRanges[idx]} <span className="text-xs font-normal text-gray-500">estimated unit range</span></p>
+                      <p className="text-xl font-bold text-[#DC2626] mb-4">{product.priceRange} <span className="text-xs font-normal text-gray-500">estimated unit range</span></p>
                       <div className="mb-2">
                         <span className="text-xs font-semibold text-[#DC2626] bg-[#DC2626]/10 px-2 py-1 rounded mr-2">{product.tier}</span>
                         <span className="text-xs text-red-400 bg-red-900/30 px-2 py-1 rounded">{product.status}</span>
