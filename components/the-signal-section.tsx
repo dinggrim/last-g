@@ -9,7 +9,7 @@ export default function TheSignalSection() {
   }
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/923195491250?text=Hello, I'm interested in custom clothing manufacturing.", "_blank")
+    window.open("https://wa.me/13075007462?text=Hello, I'm interested in custom clothing manufacturing.", "_blank")
   }
 
   const handleSecureChannelClick = () => {

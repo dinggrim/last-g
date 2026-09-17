@@ -9,11 +9,11 @@ export default function ContactSection() {
   }
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/923195491250?text=Hello, I'm interested in custom clothing manufacturing.", "_blank")
+    window.open("https://wa.me/13075007462?text=Hello, I'm interested in custom clothing manufacturing.", "_blank")
   }
 
   const handleiMessageClick = () => {
-    window.location.href = "sms:+923195491250&body=Hello, I'm interested in custom clothing manufacturing."
+    window.location.href = "sms:+13075007462&body=Hello, I'm interested in custom clothing manufacturing."
   }
 
   return (

@@ -19,6 +19,7 @@ const products = [
     tier: "ELITE OPS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/1.png", // replace with actual filename if needed
+    priceRange: "$68 - $92",
     description: "Advanced stealth shell for urban operations. Adaptive fiber blend, signal-dampening, and zero-trace seams. Designed for field agents requiring maximum discretion.",
   },
   {
@@ -28,6 +29,7 @@ const products = [
     tier: "ELITE OPS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/2.png",
+    priceRange: "$84 - $118",
     description: "Engineered for speed and agility. Lightweight exo-fabric, kinetic support zones, and rapid-cool mesh. Trusted by recon units and advanced trainers.",
   },
   {
@@ -37,6 +39,7 @@ const products = [
     tier: "ELITE OPS MODULE",
     status: "🔒 RESTRICTED ACCESS",
     image: "/images/products/3.png",
+    priceRange: "$42 - $64",
     description: "Compression-mapped for muscle support and movement. Core-lock technology for stability under pressure. Used in high-mobility ops.",
   },
   {
@@ -122,6 +125,8 @@ const products = [
   },
 ]
 
+const priceRanges = ["$68 - $92", "$84 - $118", "$42 - $64", "$96 - $140", "$78 - $112", "$58 - $86", "$24 - $38", "$54 - $78", "$46 - $68", "$38 - $56", "$32 - $48", "$72 - $104"]
+
 export default function ProductsPageContent() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const router = useRouter();
@@ -158,7 +163,9 @@ export default function ProductsPageContent() {
                       <span className="text-xs text-red-400 bg-red-900/30 px-2 py-1 rounded">{product.status}</span>
                     </div>
                   </div>
-                  <div className="p-4 flex flex-col items-start">
+                  <div className="p-4 flex flex-col items-start gap-3">
+                    <p className="text-lg font-bold text-white">{priceRanges[idx]}</p>
+                    <p className="text-xs text-gray-500">Estimated unit range</p>
                     <button className="mt-2 px-4 py-2 bg-[#DC2626] text-white rounded font-semibold text-xs tracking-wider hover:bg-[#b91c1c] transition">REQUEST ACCESS</button>
                   </div>
                 </Card>
@@ -173,6 +180,7 @@ export default function ProductsPageContent() {
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-2">{product.codename}</h3>
                       <p className="text-lg text-gray-300 mb-2">{product.simpleName}</p>
+                      <p className="text-xl font-bold text-[#DC2626] mb-4">{priceRanges[idx]} <span className="text-xs font-normal text-gray-500">estimated unit range</span></p>
                       <div className="mb-2">
                         <span className="text-xs font-semibold text-[#DC2626] bg-[#DC2626]/10 px-2 py-1 rounded mr-2">{product.tier}</span>
                         <span className="text-xs text-red-400 bg-red-900/30 px-2 py-1 rounded">{product.status}</span>
