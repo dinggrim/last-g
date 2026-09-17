@@ -64,7 +64,7 @@ export default function ContactSection() {
         </div>
 
         <div className="text-center">
-          <p className="text-gray-400 mb-4">📍 Hajipura Road, Custom Wear Industry, Sialkot, Pakistan</p>
+          <p className="text-gray-400 mb-2">1309 COFFEEN AVE STE 20511, SHERIDAN, WY, 82801-5777-997, USA</p><a href="tel:+13075007462" className="text-white hover:text-[#DC2626]">+1 3075007462</a>
           <p className="text-[#C0C0C0]">Your message goes directly to our team. We respond within 24 hours.</p>
         </div>
       </div>

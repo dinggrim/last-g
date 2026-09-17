@@ -62,7 +62,7 @@ export default function TheSignalSection() {
         </div>
 
         <div className="text-center">
-          <p className="text-small text-gray-400 mb-2">📍 Hajipura Road, Sialkot, Pakistan</p>
+          <p className="text-small text-gray-400 mb-2">1309 COFFEEN AVE STE 20511, SHERIDAN, WY, 82801-5777-997, USA</p><a href="tel:+13075007462" className="text-white hover:text-[#DC2626]">+1 3075007462</a>
           <p className="text-xs sm:text-sm text-[#C0C0C0]">Response within 24 hours. Always.</p>
         </div>
       </div>
