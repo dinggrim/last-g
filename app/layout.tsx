@@ -1,6 +1,7 @@
 import './globals.css';
 import { ReactNode } from 'react';
 import Script from 'next/script';
+import Footer from '@/components/footer';
 
 export const metadata = {
   title: 'Custom Wear Industry',
@@ -50,7 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </noscript>
       </head>
-      <body>{children}</body>
+      <body>{children}<Footer /></body>
     </html>
   );
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Navbar from "@/components/navbar"
 import TestimonialDetails from "@/components/testimonial-details"
-import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 
 const testimonials = {
@@ -124,7 +123,6 @@ export default function TestimonialPage({ params }: TestimonialPageProps) {
       <div className="pt-20">
         <TestimonialDetails testimonial={testimonial} />
       </div>
-      <Footer />
       <WhatsAppButton />
     </div>
   )

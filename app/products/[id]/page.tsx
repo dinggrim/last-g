@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Navbar from "@/components/navbar"
 import ProductDetails from "@/components/product-details"
-import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 
 const products = {
@@ -204,7 +203,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="pt-20">
         <ProductDetails product={product} />
       </div>
-      <Footer />
       <WhatsAppButton />
     </div>
   )

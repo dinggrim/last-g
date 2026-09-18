@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Navbar from "@/components/navbar"
 import EliteApplicationForm from "@/components/elite-application-form"
-import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 
 export const metadata: Metadata = {
