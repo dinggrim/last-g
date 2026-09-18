@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 import { CheckCircle } from "lucide-react"
 import Link from "next/link"
@@ -84,7 +83,6 @@ export default function ThankYouPage() {
           </div>
         </section>
       </div>
-      <Footer />
       <WhatsAppButton />
     </div>
   )
