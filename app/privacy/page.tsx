@@ -12,6 +12,7 @@ export default function PrivacyPage() {
       title="Privacy Policy"
       intro="We respect the trust behind every inquiry, order, and collaboration. This policy explains what information we collect, why we use it, and the safeguards we apply."
       sections={[
+        { heading: "Scope and data controller", body: "This policy applies to information processed by Custom Wear Industry LLC through this website, our inquiries, and our customer relationships. Custom Wear Industry LLC is the data controller for the personal information described here." },
         { heading: "Information we collect", body: "We may collect your name, email address, phone number, company details, project requirements, and information submitted through our forms. We also receive basic technical information such as browser type and pages visited." },
         { heading: "How we use information", body: "We use submitted information to respond to inquiries, prepare manufacturing discussions, provide requested services, improve the website, prevent abuse, and meet legal obligations. We do not sell customer information." },
         { heading: "Security and retention", body: "We use reasonable administrative, technical, and organizational safeguards to protect information from unauthorized access, alteration, or disclosure. We retain information only as long as needed for the purpose collected, an active business relationship, or applicable legal requirements." },
